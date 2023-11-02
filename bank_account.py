@@ -21,6 +21,12 @@ class AccountDB:
                 return account
         return None
 
+    def del_account(self, account_num):
+        for account in self.account_database:
+            if account_num == account.account_number:
+                self.account_database.remove(account)
+                break
+
     def __str__(self):
         s = ''
         for account in self.account_database:
@@ -63,5 +69,10 @@ my_account_DB.search_public("0003").deposit(50)
 print(my_account_DB)
 my_account_DB.search_public("0003").withdraw(100)
 print(my_account_DB)
-my_account_DB.search_public("0010").deposit(50)
+my_account_DB.del_account("0004")
 print(my_account_DB)
+my_account_DB.del_account("0001")
+print(my_account_DB)
+my_account_DB.del_account("0003")
+print(my_account_DB)
+
