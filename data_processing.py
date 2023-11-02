@@ -102,15 +102,23 @@ print(my_table3)
 my_table3_filtered = my_table3.filter(lambda x: x['EU'] == 'no').filter(lambda x: float(x['temperature']) < 5.0)
 print(my_table3_filtered.table)
 
-# print()
-# my_table4 = my_table1.join(my_table2, 'country')
-# my_table4_filtered = my_table4.filter(lambda x: x['EU'] == 'yes').filter(lambda x: float(x['coastline'] == 'no'))
-# print(my_table4_filtered)
-# temps = []
-# for item in my_table4_filtered.table:
-#     temps.append(float(item['temperature']))
-# print(f"Min temp: {min(temps)}")
-# print(f"Max temp: {max(temps)}")
-#
-# print()
+print()
+my_table4 = my_table1.join(my_table2, 'country')
+my_table4_filtered = my_table4.filter(lambda x: x['EU'] == 'yes').filter(lambda x: float(x['coastline'] == 'no'))
+print(my_table4_filtered)
+temps = []
+for item in my_table4_filtered.table:
+    temps.append(float(item['temperature']))
+print(f"Min temp: {min(temps)}")
+print(f"Max temp: {max(temps)}")
+
+print()
+my_table5 = my_table1.join(my_table2, 'country')
+my_table5_selected = my_table5.select((['latitude']))
+lats = []
+for item in my_table5_selected:
+    lats.append(float(item['latitude']))
+print(f"Min latitude: {min(lats)}")
+print(f"Max latitude: {max(lats)}")
+
 
